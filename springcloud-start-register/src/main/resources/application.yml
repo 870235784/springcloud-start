@@ -13,4 +13,6 @@ eureka:
 spring:
   application:
     name: server-register  # 当前项目的实例名称(很重要)
+    
+logging:  file: logback.xml
       
