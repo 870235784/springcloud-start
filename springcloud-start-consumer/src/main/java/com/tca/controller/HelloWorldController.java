@@ -21,4 +21,11 @@ public class HelloWorldController {
 		LOGGER.info("开始调用provider的方法");
 		return helloWorldService.hello();
 	}
+	
+	@RequestMapping("/encoding")
+	public String encoding() {
+		LOGGER.info("开始调用provider的方法");
+		return helloWorldService.encoding();
+	}
+	
 }

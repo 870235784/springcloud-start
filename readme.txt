@@ -128,6 +128,48 @@
   	3.7 验证
   		3.7.1 启动当前项目
   		3.7.2 访问localhost:8000
+  		
+4.创建子模块 — eureka客户端 — 服务消费者
+	4.1 创建maven module
+	4.2 添加eureka-client, openfeign依赖
+		<dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+    4.3 添加启动类SpringCloudStartConsumer
+    	4.3.1 添加@SpringBootApplication
+    	4.3.2 添加@EnableEurekaClient 表明该项目是eureka-client, 即表示当前项目是eureka客户端
+    	4.3.3 添加@EnableFeignClients 开启openfeign
+    4.4 添加主配置文件
+    	server:
+  			port: 8002
+		eureka:
+  			client:
+    			serviceUrl:
+      				defaultZone: http://localhost:8000/eureka/
+		spring:
+  			application:
+    			name: client-consumer
+		logging:
+  			file: logback.xml
+  	4.5 添加日志配置文件logback.xml(内容略)
+  	4.6 添加对外接口Controller
+  		Controller
+  			Service (ServiceImpl)
+  				Feign
+  	4.7 Feign类
+  		4.7.1 定义Feign接口
+  		4.7.2 添加@FeignClient("服务提供名")
+  		4.7.3 添加对应的RequestMapping
+  		4.7.4 添加接口及对应的RequestMapping
+  	4.8 验证
+		4.8.1 启动当前项目
+  		4.8.2 访问localhost:8000
+    	
   
     	
     	
