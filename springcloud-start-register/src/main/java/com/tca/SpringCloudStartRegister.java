@@ -8,12 +8,12 @@ import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 @SpringBootApplication
 @EnableEurekaServer
-public class SpringApplicationBoot {
+public class SpringCloudStartRegister {
 	
-	private static final Logger LOGGER = LoggerFactory.getLogger(SpringApplicationBoot.class);
+	private static final Logger LOGGER = LoggerFactory.getLogger(SpringCloudStartRegister.class);
 	
 	public static void main(String[] args) {
-		SpringApplication.run(SpringApplicationBoot.class, args);
+		SpringApplication.run(SpringCloudStartRegister.class, args);
 		LOGGER.info("springcloud-start-register starts...");
 	}
 }
