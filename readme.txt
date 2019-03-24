@@ -94,8 +94,40 @@
 		spring:
   			application:
     			name: server-register  # 当前项目的实例名称(很重要)
-    2.5 验证
-    	2.5.1 启动当前项目
-    	2.5.2 访问: localhost:8000
-      
+    2.5 添加日志配置文件logback.xml(内容略), 并在主配置文件application.yml文件中注册
+    	logging:
+  			file: logback.xml			
+    2.6 验证
+    	2.6.1 启动当前项目
+    	2.6.2 访问: localhost:8000
+    	
+3.创建子模块 — eureka客户端 — 服务提供者
+	3.1 创建maven module
+	3.2 添加eureka-client依赖
+		<dependency>
+     		<groupId>org.springframework.cloud</groupId>
+     		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+   		</dependency>
+   	3.3 添加启动类SpringCloudStartProvider
+    	3.3.1 添加@SpringBootApplication
+    	3.3.2 添加@EnableEurekaClient 表明该项目是eureka-client, 即表示当前项目是eureka客户端
+    3.4 添加主配置文件
+    	server:
+  			port: 8001
+		spring:
+  			application:
+    			name: client-provider
+		eureka:
+  			client:
+    			serviceUrl:
+      				defaultZone: http://localhost:8000/eureka/
+		logging:
+  			file: logback.xml
+  	3.5 添加日志配置文件logback.xml(内容略)
+  	3.6 添加对外访问Controller接口localhost:8001/hello
+  	3.7 验证
+  		3.7.1 启动当前项目
+  		3.7.2 访问localhost:8000
+  
+    	
     	
