@@ -91,7 +91,7 @@
 	
   <modules>
   	<module>springcloud-start-register</module>
-  	<module>springcloud-start-provider-01</module>
-  	<module>springcloud-start-consumer-01</module>
+  	<module>springcloud-start-provider</module>
+  	<module>springcloud-start-consumer</module>
   </modules>
 </project>

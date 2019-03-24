@@ -5,7 +5,7 @@
     <artifactId>springcloud-start</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
-  <artifactId>springcloud-start-provider-01</artifactId>
+  <artifactId>springcloud-start-provider</artifactId>
   
   <dependencies>
    <dependency>

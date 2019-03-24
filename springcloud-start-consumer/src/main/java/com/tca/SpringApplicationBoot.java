@@ -18,6 +18,6 @@ public class SpringApplicationBoot {
 	
 	public static void main(String[] args) {
 		SpringApplication.run(SpringApplicationBoot.class, args);
-		LOGGER.info("springcloud-start-consumer-01 starts...");
+		LOGGER.info("springcloud-start-consumer starts...");
 	}
 }
