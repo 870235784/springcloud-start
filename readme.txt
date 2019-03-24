@@ -20,11 +20,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-starter-web</artifactId>
 			</dependency>
-			<!-- 使用jetty服务器 -->
-			<dependency>
-    			<groupId>org.springframework.boot</groupId>
-    			<artifactId>spring-boot-starter-jetty</artifactId>
-			</dependency>
 			<!-- springboot热部署：需要将project -> build automatically打开  -->
 			<dependency>
 				<groupId>org.springframework.boot</groupId>
