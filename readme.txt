@@ -212,9 +212,9 @@
 		
 			基本使用的缺陷: 每个处理器方法上都需要配置@HystrixCommond注解,并添加处理方法,会使得处理器类很臃肿,代码不够简洁
 		7.3.3 hystrix整合openfeign
-			第一步 在Feign接口所在包下定义降级处理类
-			第二步 在Feign接口中指定要使用的降级处理类
-			第三步 在配置文件中开启Feign对Hystrix的支持
+			第一步 在Feign接口所在包下定义降级处理类(自定义FallbackFactory实现FallbackFactory<T>接口), 并加上@Component标签
+			第二步 在Feign接口中指定要使用的降级处理类(在@FeignClient标签上添加fallbackFactory属性) 
+			第三步 在配置文件中开启Feign对Hystrix的支持(feign.hystrix.enabled=true)
 
 
 
