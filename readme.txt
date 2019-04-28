@@ -248,14 +248,14 @@
     				name: zuul
 			logging:
   				file: logback.xml
-  			zuul:	
-  				routes:
-  					consumer.serviceId: client-consumer
-  					consumer.path: /zuul-consumer/**
   		4.添加启动类,加上注解
   			@EnableZuulProxy //开启zuul代理
 			@SpringBootApplication
-
+		5.在主配置文件中添加zuul代理
+			zuul:	
+  				routes:
+  					consumer.serviceId: client-consumer
+  					consumer.path: /zuul-consumer/**
 			
 
 
