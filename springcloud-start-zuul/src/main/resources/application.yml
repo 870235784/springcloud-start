@@ -1,0 +1,18 @@
+server:
+  port: 9000
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8000/eureka/
+
+spring:
+  application:
+    name: zuul
+    
+logging:  file: logback.xml
+
+zuul: 
+  routes:
+    consumer.serviceId: client-consumer
+    consumer.path: /zuul-consumer/**

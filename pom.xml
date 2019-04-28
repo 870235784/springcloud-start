@@ -77,5 +77,6 @@
   	<module>springcloud-start-register</module>
   	<module>springcloud-start-provider</module>
   	<module>springcloud-start-consumer</module>
+  	<module>springcloud-start-zuul</module>
   </modules>
 </project>

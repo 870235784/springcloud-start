@@ -223,6 +223,40 @@
 		的处理过程进行干预,对请求进行校验,服务聚合等处理。
 		zuul与eureka进行整合,将zuul自身注册为eureka服务治理下的应用,从eureka server中获取到其他微服务信息,使外部对于微服务的访问都是
 		通过zuul进行转发的。
+	8.2 基本使用
+		1.创建zuul springboot module
+		2.添加依赖 eureka-client和zuul
+			<!-- eureka -->
+    		<dependency>
+        		<groupId>org.springframework.cloud</groupId>
+        		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+    		</dependency>
+    		<!-- zuul -->
+     		<dependency>
+        		<groupId>org.springframework.cloud</groupId>
+        		<artifactId>spring-cloud-starter-netflix-zuul</artifactId>
+    		</dependency>
+    	3.添加主配置文件
+			server:
+  				port: 9000
+			eureka:
+  				client:
+    				serviceUrl:
+     		 			defaultZone: http://localhost:8000/eureka/
+			spring:
+  				application:
+    				name: zuul
+			logging:
+  				file: logback.xml
+  			zuul:	
+  				routes:
+  					consumer.serviceId: client-consumer
+  					consumer.path: /zuul-consumer/**
+  		4.添加启动类,加上注解
+  			@EnableZuulProxy //开启zuul代理
+			@SpringBootApplication
+
+			
 
 
 
