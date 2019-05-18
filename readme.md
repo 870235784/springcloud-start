@@ -254,9 +254,34 @@
 		5.在主配置文件中添加zuul代理
 			zuul:	
   				routes:
-  					consumer.serviceId: client-consumer
-  					consumer.path: /zuul-consumer/**
+  					consumer:
+  						serviceId: client-consumer
+  						path: /zuul-consumer/**
 			
+
+================================================================================================
+
+9.注册中心Eureka高可用配置
+	9.1 原理
+		通过Eureka集群解决高可用问题。Eureka Server的高可用实际上就是将自己作为服务向其他服务注册中心注册自己，这样就会形成一组互相注册的服务
+		注册中心，进而实现服务清单的互相同步，达到高可用的效果
+	9.2 实现
+		修改注册中心服务springcloud-start-register，配置多环境
+		1.添加application-1.yml文件和application-2.yml文件
+		2.修改相关配置：
+			2.1 server.port
+			2.2 eureka.instance.hostname
+			2.3 spring.application.name
+			(上述三项只要不一致即可)
+			2.4 eureka.client.serviceUrl.defaultZone
+			(该配置应使两个服务相互指向)
+		3.分别打包成两套jar包, 并分别启动
+	9.3 验证
+		1.启动springcloud-start-provider和springcloud-start-consumer, 两个服务可以向任意注册中心注册
+		2.访问springcloud-start-consumer
+		3.关掉一个注册中心,再访问springcloud-start-consumer
+		
+		
 
 
 

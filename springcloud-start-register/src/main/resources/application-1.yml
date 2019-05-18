@@ -1,0 +1,18 @@
+server:
+  port: 8001  # 该服务端口
+
+eureka:
+  instance:
+    hostname: localhost-1  # eureka的实例名称
+  client:
+    registerWithEureka: false  # false表示当前项目不以客户端注册到服务中心(因为该项目本身就是注册中心)
+    fetchRegistry: false  # false表示当前项目不需要从注册中心拉取服务配置(因为该项目本身就是注册中心)
+    serviceUrl:
+      defaultZone: http://localhost:8002/eureka/  #  注册中心的访问
+
+spring:
+  application:
+    name: server-register-1  # 当前项目的实例名称(很重要)
+    
+logging:  file: logback.xml
+      
