@@ -21,12 +21,14 @@ public class HelloWorldController {
 	@RequestMapping("/hello")
 	public String hello() {
 		LOGGER.info("开始调用provider的方法");
+		LOGGER.info("当前端口号为:7001");
 		return helloWorldService.hello();
 	}
 	
 	@RequestMapping("/encoding")
 	public String encoding() {
 		LOGGER.info("开始调用provider的方法");
+		LOGGER.info("当前端口号为:7001");
 		return helloWorldService.encoding();
 	}
 	
