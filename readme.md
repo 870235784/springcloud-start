@@ -257,7 +257,7 @@
   					consumer:
   						serviceId: client-consumer
   						path: /zuul-consumer/**
-			
+		
 
 ================================================================================================
 
@@ -286,6 +286,47 @@
 		feign与eureka整合, 实现了负载均衡
 	10.2 实现
 		只要修改两个springcloud-start-provider的启动端口, 使其不一致即可
+		
+		
+===================================================================================================
+11. 创建子模块——配置中心服务端 config
+	11.1 创建maven module — springcloud-start-config
+	11.2 添加erueka-client和config-server依赖
+		<dependency>
+    		<groupId>org.springframework.cloud</groupId>
+    		<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-config-server</artifactId>
+		</dependency>		
+	11.3 添加启动类SpringCloudStartConfig
+    	2.3.1 添加@SpringBootApplication
+    	2.3.2 添加@EnableConfigServer 开启配置中心
+    2.4 添加主配置文件application.yml
+    	server:
+  			port: 20080  # 该服务端口
+
+		eureka:
+  			instance:
+    			hostname: localhost  # eureka的实例名称
+  			client:
+    			registerWithEureka: false  # false表示当前项目不以客户端注册到服务中心(因为该项目本身就是注册中心)
+    			fetchRegistry: false  # false表示当前项目不需要从注册中心拉取服务配置(因为该项目本身就是注册中心)
+    		serviceUrl:
+      			defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #  注册中心的访问
+
+		spring:
+  			application:
+    			name: server-register  # 当前项目的实例名称(很重要)
+    2.5 添加日志配置文件logback.xml(内容略), 并在主配置文件application.yml文件中注册
+    	logging:
+  			file: logback.xml			
+    2.6 验证
+    	2.6.1 启动当前项目
+    	2.6.2 访问: localhost:8000
+	
+
 		
 		
 		

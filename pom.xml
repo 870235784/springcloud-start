@@ -78,5 +78,6 @@
   	<module>springcloud-start-provider</module>
   	<module>springcloud-start-consumer</module>
   	<module>springcloud-start-zuul</module>
+  	<module>springcloud-start-config</module>
   </modules>
 </project>
