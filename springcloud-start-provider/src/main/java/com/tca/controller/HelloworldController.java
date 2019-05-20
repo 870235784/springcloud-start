@@ -16,8 +16,7 @@ public class HelloworldController {
 	
 	@RequestMapping("/hello")
 	public String hello() {
-		logger.info("当前端口号为 : 9001");
-		return "hello " + applicationName;
+		return "hello " + applicationName + " =============================================";
 	}
 
 	@RequestMapping("/encoding")

@@ -281,6 +281,13 @@
 		2.访问springcloud-start-consumer
 		3.关掉一个注册中心,再访问springcloud-start-consumer
 		
+10.服务提供者springcloud-start-provider高可用及负载均衡
+	10.1 原理
+		feign与eureka整合, 实现了负载均衡
+	10.2 实现
+		只要修改两个springcloud-start-provider的启动端口, 使其不一致即可
+		
+		
 		
 
 
