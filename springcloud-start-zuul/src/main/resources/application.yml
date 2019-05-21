@@ -14,5 +14,9 @@ logging:  file: logback.xml
 
 zuul: 
   routes:
-    consumer.serviceId: client-consumer
-    consumer.path: /zuul-consumer/**
+    consumer:
+       serviceId: client-consumer
+       path: /zuul-consumer/**
+    provider:
+       serviceId: client-provider
+       path: /zuul-provider/**
