@@ -272,6 +272,13 @@
 				int filterOrder(); //定义filter的顺序，数字越小表示顺序越高，越先执行
 				boolean shouldFilter(); //表示是否需要执行该filter，true表示执行，false表示不执行
 				Object run(); //filter需要执行的具体操作
+	8.4 其他配置
+		8.4.1 默认配置
+			开启zuul网关服务后并将其注册到eureka后, 即使不配置zuul.routes, eureka上所有注册的服务都会被zuul创建映射关系来进行路由。如果某个服务
+			不希望通过zuul网关来路由,则可以配置：
+			zuul.ignored-services: service-name
+		8.4.2 忽略某些请求路径
+			zuul.ignored-patterns: /**/hello/**
 ================================================================================================
 
 9.注册中心Eureka高可用配置

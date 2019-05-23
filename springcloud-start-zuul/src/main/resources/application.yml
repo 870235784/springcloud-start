@@ -17,6 +17,7 @@ zuul:
     consumer:
        serviceId: client-consumer
        path: /zuul-consumer/**
-    provider:
-       serviceId: client-provider
-       path: /zuul-provider/**
+#    provider:
+#       serviceId: client-provider
+#       path: /zuul-provider/**
+  ignored-services: client-provider
