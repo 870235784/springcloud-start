@@ -4,10 +4,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.zuul.EnableZuulProxy;
 
 @EnableZuulProxy //开启zuul代理
 @SpringBootApplication
+@EnableEurekaClient
 public class SpringCloudZuul {
 	
 	private static final Logger LOGGER = LoggerFactory.getLogger(SpringCloudZuul.class);

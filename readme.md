@@ -344,7 +344,19 @@
 		
     11.5 添加日志配置文件logback.xml(内容略), 并在主配置文件application.yml文件中注册
     	logging:
-  			file: logback.xml	
+  			file: logback.xml
+  	11.6 如何访问
+  		如：远程库的目录结构为：
+  			--config
+  				--app-dev.properties
+  				--app-test.properties
+  				--app-prod.properties
+  		访问：
+  				application-name:配置文件应用名称
+  				profile:环境名称
+  				label:分支名称
+  			方式一:ip:port/{application-name}/{profile}/{label}	  
+  					localhost:20080/app/prod/master
   			
 
 12.  创建子模块——配置中心客户端		

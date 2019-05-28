@@ -20,4 +20,7 @@ zuul:
     provider:
        serviceId: client-provider
        path: /zuul-provider/**
+    config:
+       serviceId: config-server
+       path: /zuul-config/**
   ignored-services: '*'
