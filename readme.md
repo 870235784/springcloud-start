@@ -251,6 +251,7 @@
   		4.添加启动类,加上注解
   			@EnableZuulProxy //开启zuul代理
 			@SpringBootApplication
+			@EnableEurekaClient
 		5.在主配置文件中添加zuul代理
 			zuul:	
   				routes:
