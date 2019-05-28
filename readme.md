@@ -383,7 +383,8 @@
 			</dependency>
 		</dependencies>
 	12.3 添加启动类SpringCloudStartConfig
-    	12.3.1 添加@SpringBootApplication
+    	添加@SpringBootApplication
+    	添加@EnableEurekaClient
     12.4 添加主配置文件application.yml
     	server:
   			port: 20090
@@ -396,6 +397,15 @@
       				defaultZone: http://localhost:8001/eureka/
 		logging:
   			file: logback.xml
+  	12.5 添加bootstrap.yml配置文件
+  		spring:
+   			application:
+      			name: app  # 表示配置文件app
+  	 	cloud:
+      		config:
+         		profile: dev  # 表示配置文件的环境
+         		label: master # 表示配置文件的分支
+         		uri: http://localhost:20080/ # 配置中心服务器访问路径
   
 	
 
