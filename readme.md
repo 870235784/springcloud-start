@@ -321,30 +321,69 @@
 			<artifactId>spring-cloud-config-server</artifactId>
 		</dependency>		
 	11.3 添加启动类SpringCloudStartConfig
-    	2.3.1 添加@SpringBootApplication
-    	2.3.2 添加@EnableConfigServer 开启配置中心
-    2.4 添加主配置文件application.yml
+    	11.3.1 添加@SpringBootApplication
+    	11.3.2 添加@EnableConfigServer 开启配置中心
+    11.4 添加主配置文件application.yml
     	server:
   			port: 20080  # 该服务端口
-
-		eureka:
-  			instance:
-    			hostname: localhost  # eureka的实例名称
-  			client:
-    			registerWithEureka: false  # false表示当前项目不以客户端注册到服务中心(因为该项目本身就是注册中心)
-    			fetchRegistry: false  # false表示当前项目不需要从注册中心拉取服务配置(因为该项目本身就是注册中心)
-    		serviceUrl:
-      			defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/  #  注册中心的访问
-
 		spring:
   			application:
-    			name: server-register  # 当前项目的实例名称(很重要)
-    2.5 添加日志配置文件logback.xml(内容略), 并在主配置文件application.yml文件中注册
+    			name: config-server
+  			cloud:
+    			config:
+      				server:
+        				git:
+          					uri: https://github.com/870235784/springcloud-config.git   # 配置git仓库的地址
+          					search-paths: config                                 # git仓库地址下的相对地址，可以配置多个，用,分割。
+          					username: 					                         # git仓库的账号
+          					password: 			                                 # git仓库的密码
+		eureka:
+  			client:
+    			serviceUrl:
+      				defaultZone: http://localhost:8001/eureka/
+		
+    11.5 添加日志配置文件logback.xml(内容略), 并在主配置文件application.yml文件中注册
     	logging:
-  			file: logback.xml			
-    2.6 验证
-    	2.6.1 启动当前项目
-    	2.6.2 访问: localhost:8000
+  			file: logback.xml	
+  			
+
+12.  创建子模块——配置中心客户端		
+    12.1 创建maven module — springcloud-start-config-client
+	12.2  添加rueka-client和config依赖
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-starter-config</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-web</artifactId>
+			</dependency>
+			<dependency>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-starter-test</artifactId>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+    			<groupId>org.springframework.cloud</groupId>
+    			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
+			</dependency>
+		</dependencies>
+	12.3 添加启动类SpringCloudStartConfig
+    	12.3.1 添加@SpringBootApplication
+    12.4 添加主配置文件application.yml
+    	server:
+  			port: 20090
+		spring:
+  			application:
+    			name: config-client
+		eureka:
+  			client:
+    			serviceUrl:
+      				defaultZone: http://localhost:8001/eureka/
+		logging:
+  			file: logback.xml
+  
 	
 
 		
